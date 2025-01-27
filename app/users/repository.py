@@ -1,11 +1,7 @@
-
-
-
 from typing import Optional
-from fastapi import HTTPException, logger
 from sqlalchemy import select
 from app.database import User, new_session
-from app.users.schemas import SUserId, SUserUsername
+from app.users.schemas import SUserUsername
 
 
 class UserRepo:
@@ -22,7 +18,7 @@ class UserRepo:
             return user
 
     @classmethod
-    async def get_one_or_none(cls, user_id: int) -> User:
+    async def get_user(cls, user_id: int) -> User:
         async with new_session() as session:
             query = select(User).where(User.id == user_id)
             instance = await session.execute(query)
@@ -30,7 +26,7 @@ class UserRepo:
             return result
  
     @classmethod
-    async def get_by_username(cls, username: str) -> Optional[User]:
+    async def get_user_by_username(cls, username: str) -> Optional[User]:
         async with new_session() as session:
             query = select(User).where(User.username == username.lower())
             instance = await session.execute(query)
