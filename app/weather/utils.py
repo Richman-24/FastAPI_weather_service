@@ -9,8 +9,8 @@ from app.cities.repository import CityRepo
 from app.database import City, Weather, new_session
 
 
-async def update_forecast(city_name=None):  # Это в utils.py
-    """Обновляет прогноз погоды для ВСЕХ ГОРОДОВ ИЗ БАЗЫ \ КОНКРЕТНОГО ГОРОДА."""
+async def update_forecast(city_name=None):
+    """Обновляет прогноз погоды для ВСЕХ ГОРОДОВ ИЗ БАЗЫ / КОНКРЕТНОГО ГОРОДА."""
     async with new_session() as session:
         async with session.begin():
             try:
@@ -34,6 +34,7 @@ async def update_forecast(city_name=None):  # Это в utils.py
 
                     # Записываем новый прогноз в базу данных.
                     session.add_all(prepared_forecast_data)
+                    print("## Обновление прогноза проведено")
                     await session.commit()
                     
             except Exception as e:
@@ -103,6 +104,7 @@ async def delete_old_forecast(session, cities: int):
     await session.execute(query)
 
 async def format_data(hour: int):
+    """Приводит время введённое пользователем к формату iso8601."""
     today = datetime.now()
     combined_datetime = today.replace(hour=hour, minute=0, second=0, microsecond=0)
     formatted_date = combined_datetime.strftime("%Y-%m-%dT%H:%M")
