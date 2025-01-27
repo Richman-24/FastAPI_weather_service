@@ -18,6 +18,9 @@ async def update_forecast(city_name=None):
                     if city_name is None:
                         # Получаем СПИСОК ОБЪЕКТОВ всех городов из базы.
                         cities = await CityRepo.get_all_cities()
+                        
+                        if cities is None or len(cities) == 0:
+                            return
                     else:
                         # Получаем один объект города и сохраняем его в списке.
                         city_obj = await CityRepo.get_city_by_name(city_name)

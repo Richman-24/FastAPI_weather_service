@@ -1,0 +1,504 @@
+{
+	"info": {
+		"_postman_id": "35bae3fc-98d3-47fe-a0ef-b0b63a61752d",
+		"name": "InfoTecs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39876843"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "create_first_user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/users/?username=test1",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								""
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "test1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create_second_user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/users/?username=test2",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								""
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "test2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_first_user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/users/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_second_user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/users/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "cities",
+			"item": [
+				{
+					"name": "add_city_Moscow_for_first_user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/cities/?user_id=1&name=Moscow&latitude=52.52&longitude=45.45",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"cities",
+								""
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "1"
+								},
+								{
+									"key": "name",
+									"value": "Moscow"
+								},
+								{
+									"key": "latitude",
+									"value": "52.52"
+								},
+								{
+									"key": "longitude",
+									"value": "45.45"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add_city_St.Petersburg_for_first_user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/cities/?user_id=1&name=Saint-Petersburg&latitude=59.57&longitude=30.19",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"cities",
+								""
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "1"
+								},
+								{
+									"key": "name",
+									"value": "Saint-Petersburg"
+								},
+								{
+									"key": "latitude",
+									"value": "59.57"
+								},
+								{
+									"key": "longitude",
+									"value": "30.19"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add_city_St.Petersburg_for_second_user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/cities/?user_id=2&name=Saint-Petersburg&latitude=59.57&longitude=30.19",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"cities",
+								""
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "2"
+								},
+								{
+									"key": "name",
+									"value": "Saint-Petersburg"
+								},
+								{
+									"key": "latitude",
+									"value": "59.57"
+								},
+								{
+									"key": "longitude",
+									"value": "30.19"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add_city_Ivanovsk_for_second_user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/cities/?user_id=2&name=Ivanovsk&latitude=59.57&longitude=30.19",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"cities",
+								""
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "2"
+								},
+								{
+									"key": "name",
+									"value": "Ivanovsk"
+								},
+								{
+									"key": "latitude",
+									"value": "59.57"
+								},
+								{
+									"key": "longitude",
+									"value": "30.19"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_cities_first_user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/cities?user_id=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"cities"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_cities_second_user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/cities?user_id=2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"cities"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_all_cities",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/cities/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"cities",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "weather",
+			"item": [
+				{
+					"name": "get_current_weather_in_Moscow",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/weather/current/?latitude=55.45&longitude=37.36",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"weather",
+								"current",
+								""
+							],
+							"query": [
+								{
+									"key": "latitude",
+									"value": "55.45"
+								},
+								{
+									"key": "longitude",
+									"value": "37.36"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_current_weather_in_Petersburg",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/weather/current/?latitude=59.57&longitude=30.19",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"weather",
+								"current",
+								""
+							],
+							"query": [
+								{
+									"key": "latitude",
+									"value": "59.57"
+								},
+								{
+									"key": "longitude",
+									"value": "30.19"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_weather_in_Moscow_at_time",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/weather/?city_name=Moscow&time=12&params=temperature, presure, windspeed, humidity",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"weather",
+								""
+							],
+							"query": [
+								{
+									"key": "city_name",
+									"value": "Moscow"
+								},
+								{
+									"key": "time",
+									"value": "12"
+								},
+								{
+									"key": "params",
+									"value": "temperature, presure, windspeed, humidity"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_weather_in_SPB_at_time",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/weather/?city_name=Saint-Petersburg&time=1&params=temperature, presure, windspeed, humidity",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"weather",
+								""
+							],
+							"query": [
+								{
+									"key": "city_name",
+									"value": "Saint-Petersburg"
+								},
+								{
+									"key": "time",
+									"value": "1"
+								},
+								{
+									"key": "params",
+									"value": "temperature, presure, windspeed, humidity"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
