@@ -32,6 +32,7 @@ docker-compose.yml
 
 # Virtual environments
 .venv/
+.new_idea/
 env/
 ENV/
 env.bak/

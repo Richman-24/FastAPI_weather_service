@@ -12,7 +12,11 @@ class CityRepo:
             new_city.name = new_city.name.lower()
             
             session.add(new_city)
+            
             await session.flush()
+            await session.commit()
+
+            return new_city
 
     @classmethod
     async def get_cities_by_user(cls, user_id: int) -> List[str | None]:
@@ -21,7 +25,7 @@ class CityRepo:
             instance = await session.execute(query)
             result = instance.scalars().all()
 
-            return [city.name for city in result]
+            return result
     
     @classmethod
     async def get_city_by_name(cls, name: str) -> City | None:
@@ -32,13 +36,13 @@ class CityRepo:
 
     
     @classmethod
-    async def get_all_cities(cls) -> List[str | None]:
+    async def get_all_cities(cls) -> List[City | None]:
         async with new_session() as session:
             query = select(City)
             instance = await session.execute(query)
             result = instance.scalars().all()
             
-            return [city.name for city in result]
+            return result
 
 
 class CityUserRepo:

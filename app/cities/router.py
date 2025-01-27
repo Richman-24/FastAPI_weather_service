@@ -6,6 +6,7 @@ from sqlalchemy.exc import IntegrityError
 from app.cities.repository import CityRepo, CityUserRepo
 from app.cities.schemas import SCityCreate
 from app.users.repository import UserRepo
+from app.weather.utils import update_forecast
 
 
 router = APIRouter(prefix="/cities", tags=["Города",])
@@ -24,7 +25,6 @@ async def add_city(user_id: int, city_data: Annotated[SCityCreate, Depends()]):
     # Проверяем, существует ли город
     existing_city = await CityRepo.get_city_by_name(city_data.name.lower())
     if existing_city:
-        
         # Проверяем наличие связи с пользователем
         user_city_relation = await CityUserRepo.get_relation(user_id=user_id, city_id=existing_city.id)
         if user_city_relation:
@@ -38,14 +38,19 @@ async def add_city(user_id: int, city_data: Annotated[SCityCreate, Depends()]):
     else:
         # Если город не существует, создаем новый
         try:
-            new_city = await CityRepo.add_one(user_id=user_id, data=city_data)
+            existing_city = await CityRepo.add_one(user_id=user_id, data=city_data)
             await CityUserRepo.create_relation(user_id=user_id, city_id=existing_city.id)
+        
         except IntegrityError:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
                 detail="Город уже добавлен в список",
             )
-    return {"OK": f"Город {new_city.name.title()} успешно добавлен"}
+    # Записываем прогноз погоды для этого города.
+    
+    await update_forecast(city_name=existing_city.name)
+    
+    return {"OK": f"Город {existing_city.name.title()} успешно добавлен"}
 
 
 @router.get("/{user_id}", summary="Получить список городов пользователя")
@@ -58,10 +63,9 @@ async def get_cities_by_user(user_id: int) -> List[str | None]:
         )
 
     cities = await CityRepo.get_cities_by_user(user_id)
-    
-    return cities
+    return [city.name for city in cities]
 
 @router.get("/", summary="Получить ВСЕ города")
 async def get_all_cities() -> List[str | None]:
     cities = await CityRepo.get_all_cities()
-    return cities
+    return [city.name for city in cities]
